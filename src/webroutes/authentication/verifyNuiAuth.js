@@ -10,9 +10,15 @@ const sessDuration = 60 * 60 * 1000; //one hour
 
 /**
  * Verify login
+ *
+ * NOTE: good part of the header validation (including origin) is already in
+ * ctxUtils.js, but here we are way more verbose with the errors, and strict
+ * with our validations.
+ *
+ * FIXME: add better logging
+ * FIXME: will this method be deprecated?
  * @param {object} ctx
  */
-// FIXME: add logging
 module.exports = async function VerifyNuiAuth(ctx) {
     // Check sus IPs
     if (!GlobalData.loopbackInterfaces.includes(ctx.ip)) {
